@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Plural Power! — English Plurals Master</title>
+  <style>
+    /* ========== ANIMATED BANNER ========== */
+    .header-container {
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .floating-objects {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+    .object {
+      position: absolute;
+      font-size: 60px;
+      animation: float 6s ease-in-out infinite;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+    }
+    .object1 { top: 20%; left: 5%; animation-delay: 0s; }
+    .object2 { top: 60%; left: 10%; animation-delay: 1s; font-size: 50px; }
+    .object3 { top: 15%; left: 85%; animation-delay: 2s; }
+    .object4 { top: 70%; left: 80%; animation-delay: 1.5s; font-size: 55px; }
+    .object5 { top: 40%; left: 15%; animation-delay: 3s; font-size: 45px; }
+    .object6 { top: 35%; left: 90%; animation-delay: 2.5s; }
+    .object7 { top: 80%; left: 50%; animation-delay: 1s; font-size: 50px; }
+    .object8 { top: 10%; left: 30%; animation-delay: 2s; }
+    .object9 { top: 65%; left: 65%; animation-delay: 0.5s; font-size: 48px; }
+    .object10 { top: 25%; left: 60%; animation-delay: 3.5s; font-size: 52px; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      25% { transform: translateY(-20px) rotate(5deg); }
+      50% { transform: translateY(-10px) rotate(-5deg); }
+      75% { transform: translateY(-25px) rotate(3deg); }
+    }
+    .title-container {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      animation: titlePulse 2s ease-in-out infinite;
+    }
+    @keyframes titlePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .main-title {
+      font-size: 80px;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 4px 4px 0px #ff00ff, 8px 8px 0px #00ffff, 12px 12px 20px rgba(0,0,0,0.5);
+      letter-spacing: 4px;
+      margin-bottom: 10px;
+      animation: colorShift 3s ease-in-out infinite;
+    }
+    @keyframes colorShift {
+      0%, 100% { filter: hue-rotate(0deg); }
+      50% { filter: hue-rotate(30deg); }
+    }
+    .subtitle {
+      font-size: 28px;
+      color: #ffeb3b;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+    .rules-banner {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.95);
+      padding: 12px 40px;
+      border-radius: 30px;
+      display: flex;
+      gap: 25px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      z-index: 15;
+    }
+    .rule-item {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .rule-example {
+      color: #667eea;
+      font-size: 16px;
+    }
+
+    /* ========== MAIN SITE ========== */
+    :root {
+      --primary: #ff6b6b;
+      --secondary: #4ecdc4;
+      --accent: #ffe66d;
+      --dark: #1a535c;
+      --used-cell: #9e9e9e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+    body {
+      background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+    nav button {
+      background: var(--primary);
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 14px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.25s;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+    .section {
+      display: none;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+    .section.active {
+      display: block;
+      animation: fadeIn 0.6s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h2 {
+      color: var(--primary);
+      text-align: center;
+      margin: 1rem 0 1.2rem;
+      font-size: 1.9rem;
+    }
+    .rule, .exception-card {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      margin: 0.9rem 0;
+      border-radius: 12px;
+      background: #f8fdff;
+      border-left: 5px solid var(--secondary);
+    }
+    .exception-card {
+      border-left-color: var(--primary);
+      background: #fff8f8;
+    }
+    .icon {
+      font-size: 1.8rem;
+      margin-right: 1rem;
+      width: 40px;
+      text-align: center;
+    }
+    .task-type {
+      background: var(--secondary);
+      color: white;
+      padding: 0.6rem;
+      border-radius: 10px;
+      text-align: center;
+      margin: 1.4rem 0 0.8rem;
+      font-weight: bold;
+    }
+    .task-card {
+      background: white;
+      border-radius: 14px;
+      padding: 1.2rem;
+      margin: 1rem 0;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      border: 2px solid #e0e0e0;
+    }
+    input[type="text"] {
+      padding: 0.55rem;
+      font-size: 1.1rem;
+      border: 2px solid var(--secondary);
+      border-radius: 10px;
+      width: 140px;
+      text-align: center;
+      font-weight: bold;
+      margin: 0 0.4rem;
+    }
+    .options {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin: 0.8rem 0;
+    }
+    .option-btn {
+      padding: 0.5rem 0.9rem;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      background: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button.check {
+      background: var(--accent);
+      color: var(--dark);
+      border: none;
+      padding: 0.55rem 1.1rem;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-left: 0.7rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+    .feedback {
+      margin-top: 0.7rem;
+      font-weight: bold;
+      min-height: 1.4rem;
+      font-size: 1.1rem;
+    }
+    .correct { color: #2e7d32; }
+    .incorrect { color: #d32f2f; }
+
+    /* Infographic */
+    .infographic {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin: 1rem 0;
+    }
+    .infographic-row {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 1.2rem 0;
+    }
+    .infographic-item {
+      width: 140px;
+      padding: 1rem;
+      margin: 0.6rem;
+      border-radius: 12px;
+      font-weight: bold;
+    }
+    .infographic-item.plus-s { background: #e3f2fd; border-top: 4px solid #2196f3; }
+    .infographic-item.plus-es { background: #e8f5e9; border-top: 4px solid #4caf50; }
+    .infographic-item.ies { background: #fff8e1; border-top: 4px solid #ff9800; }
+    .infographic-item.ves { background: #f3e5f5; border-top: 4px solid #9c27b0; }
+    .infographic-item.irreg { background: #ffebee; border-top: 4px solid #f44336; }
+    .infographic-item .emoji {
+      font-size: 2rem;
+      margin: 0.5rem 0;
+    }
+
+    /* Jeopardy */
+    #player-setup, #jeopardy-game {
+      text-align: center;
+    }
+    .player-input {
+      padding: 0.6rem;
+      margin: 0.4rem;
+      font-size: 1rem;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      width: 160px;
+    }
+    .jeopardy-board {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 1.2rem 0;
+    }
+    .jeopardy-header {
+      text-align: center;
+      font-weight: bold;
+      padding: 0.7rem 0;
+      background: var(--dark);
+      color: white;
+      border-radius: 10px;
+      font-size: 1.1rem;
+    }
+    .jeopardy-cell {
+      background: var(--secondary);
+      color: white;
+      padding: 1.1rem 0.3rem;
+      text-align: center;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.2rem;
+      transition: all 0.3s;
+    }
+    .jeopardy-cell:hover:not(.used) {
+      background: #26a69a;
+      transform: scale(1.04);
+    }
+    .jeopardy-cell.used {
+      background: var(--used-cell) !important;
+      color: white !important;
+      cursor: not-allowed;
+      transform: none;
+    }
+    #scores {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      margin: 1.2rem 0;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .player-score {
+      background: rgba(232, 245, 233, 0.9);
+      padding: 0.6rem 1.2rem;
+      border-radius: 12px;
+      min-width: 120px;
+    }
+
+    /* Modal */
+    #question-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 100;
+    }
+    .modal-content {
+      background: white;
+      width: 90%;
+      max-width: 550px;
+      margin: 6% auto;
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+    }
+    .close-btn, .submit-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.4rem;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 0.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.4rem;
+      color: white;
+      font-size: 0.9rem;
+      background: rgba(0,0,0,0.15);
+      margin-top: 2rem;
+    }
+
+    @media print {
+      body { background: white; color: black; }
+      nav, footer, .header-container, button { display: none !important; }
+      .section { display: block !important; box-shadow: none; border: 1px solid #ccc; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ANIMATED BANNER -->
+  <div class="header-container">
+    <div class="floating-objects">
+      <div class="object object1">🐱</div>
+      <div class="object object2">🚌</div>
+      <div class="object object3">👶</div>
+      <div class="object object4">🔪</div>
+      <div class="object object5">🍅</div>
+      <div class="object object6">🐭</div>
+      <div class="object object7">🦊</div>
+      <div class="object object8">🏝️</div>
+      <div class="object object9">🧚</div>
+      <div class="object object10">🧒</div>
+    </div>
+
+    <div class="title-container">
+      <div class="main-title">PLURALS MASTER</div>
+      <div class="subtitle">⚡ Покори все правила! ⚡</div>
+    </div>
+
+    <div class="rules-banner">
+      <div class="rule-item"><span>+S</span> <span class="rule-example">cats</span></div>
+      <div class="rule-item"><span>+ES</span> <span class="rule-example">buses</span></div>
+      <div class="rule-item"><span>Y→IES</span> <span class="rule-example">babies</span></div>
+      <div class="rule-item"><span>F→VES</span> <span class="rule-example">knives</span></div>
+      <div class="rule-item"><span>+O→+ES</span> <span class="rule-example">tomatoes</span></div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <button onclick="showSection('rules')">📚 Rules</button>
+    <button onclick="showSection('exceptions')">❗ Exceptions</button>
+    <button onclick="showSection('practice')">✏️ Practice</button>
+    <button onclick="showSection('jeopardy')">🎭 Jeopardy!</button>
+    <button onclick="showSection('cheat')">🖼️ Infographic</button>
+  </nav>
+
+  <main>
+    <!-- Rules -->
+    <section id="rules" class="section active">
+      <h2>🔑 Plural Spelling Rules</h2>
+      <div class="rule">
+        <div class="icon">🐱</div>
+        <div><strong>+s</strong> → cat → cats, dog → dogs</div>
+      </div>
+      <div class="rule">
+        <div class="icon">🚌</div>
+        <div><strong>+es</strong> → bus → buses, box → boxes</div>
+      </div>
+      <div class="rule">
+        <div class="icon">👶</div>
+        <div><strong>-y → -ies</strong> → baby → babies, city → cities</div>
+      </div>
+      <div class="rule">
+        <div class="icon">🔪</div>
+        <div><strong>-f/-fe → -ves</strong> → knife → knives, leaf → leaves</div>
+      </div>
+      <div class="rule">
+        <div class="icon">🍅</div>
+        <div><strong>-o → -es</strong> → tomato → tomatoes, potato → potatoes</div>
+      </div>
+    </section>
+
+    <!-- Exceptions -->
+    <section id="exceptions" class="section">
+      <h2>❗ Irregular Plurals</h2>
+      <div class="exception-card"><div class="icon">👨</div> man → <strong>men</strong></div>
+      <div class="exception-card"><div class="icon">👩</div> woman → <strong>women</strong></div>
+      <div class="exception-card"><div class="icon">🧒</div> child → <strong>children</strong></div>
+      <div class="exception-card"><div class="icon">👥</div> person → <strong>people</strong></div>
+      <div class="exception-card"><div class="icon">🦷</div> tooth → <strong>teeth</strong></div>
+      <div class="exception-card"><div class="icon">🦶</div> foot → <strong>feet</strong></div>
+      <div class="exception-card"><div class="icon">🐭</div> mouse → <strong>mice</strong></div>
+      <div class="exception-card"><div class="icon">🐟</div> fish → <strong>fish</strong></div>
+      <div class="exception-card"><div class="icon">🐑</div> sheep → <strong>sheep</strong></div>
+      <div class="exception-card"><div class="icon">🦢</div> goose → <strong>geese</strong></div>
+    </section>
+
+    <!-- Practice -->
+    <section id="practice" class="section">
+      <h2>✏️ Practice (5 types × 5 tasks)</h2>
+
+      <div class="task-type">🔤 Type the Plural</div>
+      <div class="task-card">dog → <input type="text" id="t1"> <button class="check" onclick="checkAnswer('t1', 'dogs')">Check</button></div>
+      <div class="task-card">bus → <input type="text" id="t2"> <button class="check" onclick="checkAnswer('t2', 'buses')">Check</button></div>
+      <div class="task-card">baby → <input type="text" id="t3"> <button class="check" onclick="checkAnswer('t3', 'babies')">Check</button></div>
+      <div class="task-card">knife → <input type="text" id="t4"> <button class="check" onclick="checkAnswer('t4', 'knives')">Check</button></div>
+      <div class="task-card">tomato → <input type="text" id="t5"> <button class="check" onclick="checkAnswer('t5', 'tomatoes')">Check</button></div>
+
+      <div class="task-type">✅ Choose Correct Spelling</div>
+      <div class="task-card">city → ?<br><div class="options">
+        <button class="option-btn" onclick="checkChoice('c1', this, 'cities', ['citys', 'citties'])">cities</button>
+        <button class="option-btn" onclick="checkChoice('c1', this, 'cities', ['citys', 'citties'])">citys</button>
+        <button class="option-btn" onclick="checkChoice('c1', this, 'cities', ['citys', 'citties'])">citties</button>
+      </div></div>
+      <div class="task-card">leaf → ?<br><div class="options">
+        <button class="option-btn" onclick="checkChoice('c2', this, 'leaves', ['leafs', 'leefs'])">leaves</button>
+        <button class="option-btn" onclick="checkChoice('c2', this, 'leaves', ['leafs', 'leefs'])">leafs</button>
+        <button class="option-btn" onclick="checkChoice('c2', this, 'leaves', ['leafs', 'leefs'])">leefs</button>
+      </div></div>
+      <div class="task-card">potato → ?<br><div class="options">
+        <button class="option-btn" onclick="checkChoice('c3', this, 'potatoes', ['potatos', 'potaties'])">potatoes</button>
+        <button class="option-btn" onclick="checkChoice('c3', this, 'potatoes', ['potatos', 'potaties'])">potatos</button>
+        <button class="option-btn" onclick="checkChoice('c3', this, 'potatoes', ['potatos', 'potaties'])">potaties</button>
+      </div></div>
+      <div class="task-card">wolf → ?<br><div class="options">
+        <button class="option-btn" onclick="checkChoice('c4', this, 'wolves', ['wolfs', 'wolfes'])">wolves</button>
+        <button class="option-btn" onclick="checkChoice('c4', this, 'wolves', ['wolfs', 'wolfes'])">wolfs</button>
+        <button class="option-btn" onclick="checkChoice('c4', this, 'wolves', ['wolfs', 'wolfes'])">wolfes</button>
+      </div></div>
+      <div class="task-card">hero → ?<br><div class="options">
+        <button class="option-btn" onclick="checkChoice('c5', this, 'heroes', ['heros', 'heroies'])">heroes</button>
+        <button class="option-btn" onclick="checkChoice('c5', this, 'heroes', ['heros', 'heroies'])">heros</button>
+        <button class="option-btn" onclick="checkChoice('c5', this, 'heroes', ['heros', 'heroies'])">heroies</button>
+      </div></div>
+
+      <div class="task-type">✏️ Fix the Mistake</div>
+      <div class="task-card">"I have two <strong>cat</strong>." → <input type="text" id="f1"> <button class="check" onclick="checkAnswer('f1', 'cats')">Check</button></div>
+      <div class="task-card">"She washes the <strong>dish</strong>." → <input type="text" id="f2"> <button class="check" onclick="checkAnswer('f2', 'dishes')">Check</button></div>
+      <div class="task-card">"He saw three <strong>fly</strong>." → <input type="text" id="f3"> <button class="check" onclick="checkAnswer('f3', 'flies')">Check</button></div>
+      <div class="task-card">"They cut bread with two <strong>knife</strong>." → <input type="text" id="f4"> <button class="check" onclick="checkAnswer('f4', 'knives')">Check</button></div>
+      <div class="task-card">"We grow many <strong>potato</strong>." → <input type="text" id="f5"> <button class="check" onclick="checkAnswer('f5', 'potatoes')">Check</button></div>
+
+      <div class="task-type">🔁 Match Singular → Plural</div>
+      <div class="task-card">child → ?<br><div class="options">
+        <button class="option-btn" onclick="checkChoice('m1', this, 'children', ['childs', 'childes'])">children</button>
+        <button class="option-btn" onclick="checkChoice('m1', this, 'children', ['childs', 'childes'])">childs</button>
+        <button class="option-btn" onclick="checkChoice('m1', this, 'children', ['childs', 'childes'])">childes</button>
+      </div></div>
+      <div class="task-card">lady → ?<br><div class="options">
+        <button class="option-btn" onclick="checkChoice('m2', this, 'ladies', ['ladys', 'ladees'])">ladies</button>
+        <button class="option-btn" onclick="checkChoice('m2', this, 'ladies', ['ladys', 'ladees'])">ladys</button>
+        <button class="option-btn" onclick="checkChoice('m2', this, 'ladies', ['ladys', 'ladees'])">ladees</button>
+      </div></div>
+      <div class="task-card">shelf → ?<br><div class="options">
+        <button class="option-btn" onclick="checkChoice('m3', this, 'shelves', ['shelfs', 'shelves'])">shelves</button>
+        <button class="option-btn" onclick="checkChoice('m3', this, 'shelves', ['shelfs', 'shelves'])">shelfs</button>
+      </div></div>
+      <div class="task-card">tooth → ?<br><div class="options">
+        <button class="option-btn" onclick="checkChoice('m4', this, 'teeth', ['tooths', 'teethes'])">teeth</button>
+        <button class="option-btn" onclick="checkChoice('m4', this, 'teeth', ['tooths', 'teethes'])">tooths</button>
+        <button class="option-btn" onclick="checkChoice('m4', this, 'teeth', ['tooths', 'teethes'])">teethes</button>
+      </div></div>
+      <div class="task-card">woman → ?<br><div class="options">
+        <button class="option-btn" onclick="checkChoice('m5', this, 'women', ['womans', 'womens'])">women</button>
+        <button class="option-btn" onclick="checkChoice('m5', this, 'women', ['womans', 'womens'])">womans</button>
+        <button class="option-btn" onclick="checkChoice('m5', this, 'women', ['womans', 'womens'])">womens</button>
+      </div></div>
+
+      <div class="task-type">🎯 Complete the Rule</div>
+      <div class="task-card">"baby → babies" uses the rule:<br><div class="options">
+        <button class="option-btn" onclick="checkChoice('r1', this, '-y → -ies', ['+s', '+es'])">-y → -ies</button>
+        <button class="option-btn" onclick="checkChoice('r1', this, '-y → -ies', ['+s', '+es'])">+s</button>
+        <button class="option-btn" onclick="checkChoice('r1', this, '-y → -ies', ['+s', '+es'])">+es</button>
+      </div></div>
+      <div class="task-card">"bus → buses" uses the rule:<br><div class="options">
+        <button class="option-btn" onclick="checkChoice('r2', this, '+es', ['+s', '-y → -ies'])">+es</button>
+        <button class="option-btn" onclick="checkChoice('r2', this, '+es', ['+s', '-y → -ies'])">+s</button>
+        <button class="option-btn" onclick="checkChoice('r2', this, '+es', ['+s', '-y → -ies'])">-y → -ies</button>
+      </div></div>
+      <div class="task-card">"knife → knives" uses the rule:<br><div class="options">
+        <button class="option-btn" onclick="checkChoice('r3', this, '-f → -ves', ['+es', '-y → -ies'])">-f → -ves</button>
+        <button class="option-btn" onclick="checkChoice('r3', this, '-f → -ves', ['+es', '-y → -ies'])">+es</button>
+        <button class="option-btn" onclick="checkChoice('r3', this, '-f → -ves', ['+es', '-y → -ies'])">-y → -ies</button>
+      </div></div>
+      <div class="task-card">"tomato → tomatoes" uses the rule:<br><div class="options">
+        <button class="option-btn" onclick="checkChoice('r4', this, '+es', ['+s', '-f → -ves'])">+es</button>
+        <button class="option-btn" onclick="checkChoice('r4', this, '+es', ['+s', '-f → -ves'])">+s</button>
+        <button class="option-btn" onclick="checkChoice('r4', this, '+es', ['+s', '-f → -ves'])">-f → -ves</button>
+      </div></div>
+      <div class="task-card">"man → men" uses the rule:<br><div class="options">
+        <button class="option-btn" onclick="checkChoice('r5', this, 'Irregular', ['+es', '-y → -ies'])">Irregular</button>
+        <button class="option-btn" onclick="checkChoice('r5', this, 'Irregular', ['+es', '-y → -ies'])">+es</button>
+        <button class="option-btn" onclick="checkChoice('r5', this, 'Irregular', ['+es', '-y → -ies'])">-y → -ies</button>
+      </div></div>
+    </section>
+
+    <!-- Jeopardy -->
+    <section id="jeopardy" class="section">
+      <h2>🎭 Plural Jeopardy! (1–4 Players)</h2>
+      <div id="player-setup">
+        <p>How many players?</p>
+        <select id="num-players" onchange="setupPlayers()">
+          <option value="1">1 Player</option>
+          <option value="2">2 Players</option>
+          <option value="3">3 Players</option>
+          <option value="4">4 Players</option>
+        </select>
+        <div id="player-names"></div>
+        <button class="submit-btn" onclick="startJeopardy()">Start Game</button>
+      </div>
+      <div id="jeopardy-game" style="display:none;">
+        <div id="scores"></div>
+        <div class="jeopardy-board" id="jeopardy-board"></div>
+      </div>
+    </section>
+
+    <!-- Infographic -->
+    <section id="cheat" class="section">
+      <h2>🖼️ Plural Rules Infographic</h2>
+      <div class="infographic">
+        <div class="infographic-row">
+          <div class="infographic-item plus-s">
+            <div class="emoji">🐱</div>
+            <div><strong>+s</strong></div>
+            <div>cat → cats</div>
+          </div>
+          <div class="infographic-item plus-es">
+            <div class="emoji">🚌</div>
+            <div><strong>+es</strong></div>
+            <div>bus → buses</div>
+          </div>
+          <div class="infographic-item ies">
+            <div class="emoji">👶</div>
+            <div><strong>-y → -ies</strong></div>
+            <div>baby → babies</div>
+          </div>
+          <div class="infographic-item ves">
+            <div class="emoji">🔪</div>
+            <div><strong>-f → -ves</strong></div>
+            <div>knife → knives</div>
+          </div>
+          <div class="infographic-item irreg">
+            <div class="emoji">👨</div>
+            <div><strong>Irregular</strong></div>
+            <div>man → men</div>
+          </div>
+        </div>
+        <p style="margin-top:1.5rem; font-weight:bold; color:#555;">Print and stick on your wall!</p>
+        <button onclick="window.print()" style="background:var(--primary);color:white;border:none;padding:0.7rem 1.4rem;border-radius:12px;margin-top:1rem;">
+          🖨️ Print Infographic
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <div id="question-modal">
+    <div class="modal-content">
+      <div id="modal-content"></div>
+      <div id="feedback" class="feedback"></div>
+      <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <footer>
+    Plural Power! • A1 Level • Age 10 • Professional Resource for Teachers
+  </footer>
+
+  <script>
+    // Sound
+    function playSound(type) {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const o = ctx.createOscillator();
+        const g = ctx.createGain();
+        o.connect(g);
+        g.connect(ctx.destination);
+        if (type === 'correct') {
+          o.frequency.value = 523.25;
+          o.type = 'sine';
+          g.gain.value = 0.25;
+          o.start();
+          setTimeout(() => { o.stop(); ctx.close(); }, 250);
+        } else {
+          o.frequency.value = 200;
+          o.type = 'square';
+          g.gain.value = 0.2;
+          o.start();
+          setTimeout(() => { o.stop(); ctx.close(); }, 350);
+        }
+      } catch (e) {}
+    }
+
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    // Practice
+    function checkAnswer(id, correct) {
+      const el = document.getElementById(id);
+      let fb = document.getElementById(id + '_fb');
+      if (!fb) {
+        fb = document.createElement('div');
+        fb.id = id + '_fb';
+        fb.className = 'feedback';
+        el.parentNode.appendChild(fb);
+      }
+      const ans = el.value.trim().toLowerCase();
+      if (ans === correct) {
+        fb.textContent = '✅ Correct!';
+        fb.className = 'feedback correct';
+        playSound('correct');
+      } else {
+        fb.textContent = `❌ It's "${correct}"`;
+        fb.className = 'feedback incorrect';
+        playSound('wrong');
+      }
+    }
+
+    function checkChoice(id, btn, correct, others) {
+      let fb = document.getElementById(id + '_fb');
+      if (!fb) {
+        fb = document.createElement('div');
+        fb.id = id + '_fb';
+        fb.className = 'feedback';
+        btn.parentNode.parentNode.appendChild(fb);
+      }
+      if (btn.textContent === correct) {
+        fb.textContent = '✅ Correct!';
+        fb.className = 'feedback correct';
+        playSound('correct');
+        Array.from(btn.parentNode.children).forEach(b => {
+          if (b.textContent === correct) b.className = 'option-btn correct';
+          else b.className = 'option-btn';
+        });
+      } else {
+        fb.textContent = `❌ It's "${correct}"`;
+        fb.className = 'feedback incorrect';
+        playSound('wrong');
+        btn.className = 'option-btn incorrect';
+      }
+    }
+
+    // === PERFECT JEOPARDY: 5 ROWS × 3 COLUMNS ===
+    let players = [];
+    let scores = [];
+    let currentQuestionIndex = null;
+    let currentPlayerIndex = 0;
+    let usedCells = new Set();
+
+    function setupPlayers() {
+      const num = parseInt(document.getElementById('num-players').value);
+      let html = '';
+      for (let i = 0; i < num; i++) {
+        html += `<input type="text" class="player-input" id="player${i+1}" placeholder="Player ${i+1}"> `;
+      }
+      document.getElementById('player-names').innerHTML = html;
+    }
+
+    function startJeopardy() {
+      const num = parseInt(document.getElementById('num-players').value);
+      players = [];
+      scores = [];
+      for (let i = 0; i < num; i++) {
+        const name = document.getElementById(`player${i+1}`)?.value.trim() || `Player ${i+1}`;
+        players.push(name);
+        scores.push(0);
+      }
+      document.getElementById('player-setup').style.display = 'none';
+      document.getElementById('jeopardy-game').style.display = 'block';
+      renderScores();
+      initJeopardyBoard();
+    }
+
+    function renderScores() {
+      let html = '';
+      players.forEach((name, i) => {
+        html += `<div class="player-score">${name}: <span id="score-${i}">${scores[i]}</span></div>`;
+      });
+      document.getElementById('scores').innerHTML = html;
+    }
+
+    // ✅ DATA: [row][col]
+    const jeopardyGrid = [
+      // 100
+      [
+        {type: "gap", icon: "🐱", text: "I have two pet ___ .", answer: "cats"},
+        {type: "choice", icon: "🐶", word: "dog", options: ["dogs", "dogz", "doges"], answer: "dogs"},
+        {type: "jeopardy", icon: "📚", clue: "You read two of these.", answer: "books"}
+      ],
+      // 200
+      [
+        {type: "gap", icon: "🚌", text: "She takes two ___ to school.", answer: "buses"},
+        {type: "choice", icon: "📦", word: "box", options: ["boxes", "boxs", "boxies"], answer: "boxes"},
+        {type: "jeopardy", icon: "🥔", clue: "You cook with two of these. It ends with -o.", answer: "potatoes"}
+      ],
+      // 300
+      [
+        {type: "gap", icon: "👶", text: "There are many ___ in the park.", answer: "babies"},
+        {type: "choice", icon: "🏙️", word: "city", options: ["cities", "citys", "citties"], answer: "cities"},
+        {type: "jeopardy", icon: "🦋", clue: "These insects fly in summer. It ends with -y.", answer: "butterflies"}
+      ],
+      // 400
+      [
+        {type: "gap", icon: "🔪", text: "He sharpened two ___ .", answer: "knives"},
+        {type: "choice", icon: "🍃", word: "leaf", options: ["leaves", "leafs", "leefs"], answer: "leaves"},
+        {type: "jeopardy", icon: "🐺", clue: "These wild animals howl at night. They end with -f.", answer: "wolves"}
+      ],
+      // 500
+      [
+        {type: "gap", icon: "👨", text: "Many ___ work here.", answer: "men"},
+        {type: "choice", icon: "🦷", word: "tooth", options: ["teeth", "tooths", "teethes"], answer: "teeth"},
+        {type: "jeopardy", icon: "🦢", clue: "These white birds swim on lakes. The plural is irregular.", answer: "geese"}
+      ]
+    ];
+
+    const jeopardyData = [];
+    for (let row = 0; row < 5; row++) {
+      for (let col = 0; col < 3; col++) {
+        jeopardyData.push(jeopardyGrid[row][col]);
+      }
+    }
+
+    function initJeopardyBoard() {
+      const board = document.getElementById('jeopardy-board');
+      board.innerHTML = '';
+
+      const headers = ["📝 Sentence Gap", "✅ Choose Spelling", "❓ Jeopardy Clue"];
+      headers.forEach(h => {
+        const head = document.createElement('div');
+        head.className = 'jeopardy-header';
+        head.textContent = h;
+        board.appendChild(head);
+      });
+
+      for (let row = 0; row < 5; row++) {
+        for (let col = 0; col < 3; col++) {
+          const idx = row * 3 + col;
+          const cell = document.createElement('div');
+          cell.className = 'jeopardy-cell';
+          cell.textContent = (row + 1) * 100;
+          cell.dataset.idx = idx;
+          cell.onclick = () => openJeopardyQuestion(idx);
+          board.appendChild(cell);
+        }
+      }
+    }
+
+    function openJeopardyQuestion(idx) {
+      if (usedCells.has(idx)) return;
+      currentQuestionIndex = idx;
+      usedCells.add(idx);
+
+      const cell = document.querySelector(`.jeopardy-cell[data-idx="${idx}"]`);
+      if (cell) cell.classList.add('used');
+
+      alert(`Now answering: ${players[currentPlayerIndex]}`);
+
+      const q = jeopardyData[idx];
+      const content = document.getElementById('modal-content');
+      content.innerHTML = '';
+
+      if (q.type === "gap") {
+        content.innerHTML = `<div style="font-size:2rem;">${q.icon}</div>
+          <p>${q.text.replace("___", "<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>")}</p>
+          <input type="text" id="jeopardy-answer" class="answer-input" placeholder="Plural word...">
+          <br><button class="submit-btn" onclick="submitJeopardyAnswer()">Submit</button>`;
+      } else if (q.type === "choice") {
+        content.innerHTML = `<div style="font-size:2rem;">${q.icon}</div>
+          <p>Choose the correct spelling for:<br><strong>"${q.word}"</strong></p>`;
+        const opts = document.createElement('div');
+        opts.className = 'options';
+        q.options.forEach(opt => {
+          const btn = document.createElement('button');
+          btn.className = 'option-btn';
+          btn.textContent = opt;
+          btn.onclick = () => selectJeopardyOption(opt, q.answer);
+          opts.appendChild(btn);
+        });
+        content.appendChild(opts);
+      } else if (q.type === "jeopardy") {
+        content.innerHTML = `<div style="font-size:2rem;">${q.icon}</div>
+          <p><strong>Clue:</strong> ${q.clue}</p>
+          <input type="text" id="jeopardy-answer" class="answer-input" placeholder="Your answer...">
+          <br><button class="submit-btn" onclick="submitJeopardyAnswer()">Submit</button>`;
+      }
+      document.getElementById('feedback').textContent = '';
+      document.getElementById('question-modal').style.display = 'block';
+    }
+
+    function submitJeopardyAnswer() {
+      const user = document.getElementById('jeopardy-answer')?.value.trim().toLowerCase();
+      if (!user) return;
+      const correct = jeopardyData[currentQuestionIndex].answer;
+      const points = ((Math.floor(currentQuestionIndex / 3)) + 1) * 100;
+      processResult(user === correct, correct, points);
+    }
+
+    function selectJeopardyOption(selected, correct) {
+      const points = ((Math.floor(currentQuestionIndex / 3)) + 1) * 100;
+      processResult(selected === correct, correct, points);
+    }
+
+    function processResult(isCorrect, correct, points) {
+      const fb = document.getElementById('feedback');
+      if (isCorrect) {
+        scores[currentPlayerIndex] += points;
+        fb.textContent = '✅ Correct!';
+        fb.className = 'feedback correct';
+        playSound('correct');
+      } else {
+        fb.textContent = `❌ It's "${correct}".`;
+        fb.className = 'feedback incorrect';
+        playSound('wrong');
+      }
+      renderScores();
+      currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
+      setTimeout(() => closeModal(), 1500);
+    }
+
+    function closeModal() {
+      document.getElementById('question-modal').style.display = 'none';
+    }
+
+    setupPlayers();
+  </script>
+
+</body>
+</html>
